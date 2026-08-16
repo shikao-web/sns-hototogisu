@@ -1,0 +1,14 @@
+CREATE DATABASE IF NOT EXISTS sns_app;
+
+
+CREATE USER 'rubyonrails'@'%' IDENTIFIED BY 'abcdefgh';
+GRANT ALL PRIVILEGES ON sns_app.* TO 'rubyonrails'@'%';
+FLUSH PRIVILEGES;
+
+USE sns_app;
+CREATE TABLE IF NOT EXISTS posts(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    content TEXT NOT NULL,
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

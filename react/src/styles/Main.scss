@@ -1,0 +1,22 @@
+@charset 'utf-8';
+
+$post-border-color: #ccc;
+$post-padding: 8px 12px;
+$post-gap: 8px;
+
+.post-item {
+  text-align: left;
+  padding: $post-padding;
+  border-bottom: 1px solid $post-border-color;
+
+  .post-header {
+    display: flex;
+    gap: $post-gap;
+    align-items: baseline; // h4 と small をきれいに揃える
+  }
+
+  p {
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+}

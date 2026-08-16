@@ -1,0 +1,6 @@
+*
+!react/
+!react/**
+!nginx/
+!nginx/Dockerfile
+!nginx/nginx.conf

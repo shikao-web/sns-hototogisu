@@ -1,0 +1,55 @@
+services:
+  mysql_sns:
+    build: ./mysql
+    container_name: mysql_sns
+    environment:
+      MYSQL_ROOT_PASSWORD: examplepass 
+      MYSQL_DATABASE: sns_app 
+      MYSQL_USER: rubyonrails  
+      MYSQL_PASSWORD: abcdefgh
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pexamplepass"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - sns_net
+    volumes:
+      - mysql_sns:/var/lib/mysql
+  rails_sns: 
+    build: ./rails
+    container_name: rails_sns
+    command: bundle exec rails s -p 80 -b '0.0.0.0'
+    depends_on:
+      mysql_sns:
+        condition: service_healthy
+    environment:
+      RAILS_ENV: development
+      RAILS_SERVE_STATIC_FILES: 'true'
+      DATABASE_HOST: mysql_sns
+    expose:
+      - "80"
+    volumes:
+      - ./log:/rails/log
+    networks:
+      - sns_net
+  nginx_sns:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    container_name: nginx_sns
+    depends_on:
+      - rails_sns
+    ports:
+      - "8080:80"
+    networks:
+      - sns_net
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+
+volumes:
+  mysql_sns:
+
+networks:
+  sns_net:
+    driver: bridge

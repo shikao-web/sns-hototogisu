@@ -1,0 +1,14 @@
+.post-item {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ccc;
+}
+.post-item .post-header {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+.post-item p {
+  margin-top: 4px;
+  margin-bottom: 0;
+}/*# sourceMappingURL=Main.css.map */

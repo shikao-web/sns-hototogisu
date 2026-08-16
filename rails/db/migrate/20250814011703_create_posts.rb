@@ -1,0 +1,10 @@
+class CreatePosts < ActiveRecord::Migration[8.0]
+  def change
+    create_table :posts, if_not_exists: true do |t|
+      t.integer :user_id
+      t.text :content
+      t.datetime :created_date
+      t.timestamps
+    end
+  end
+end

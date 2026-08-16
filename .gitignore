@@ -1,0 +1,48 @@
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+/rails/config/master.key
+/rails/config/credentials/*.key
+
+# Ruby / Rails runtime files
+/rails/.bundle/
+/rails/log/*
+!/rails/log/.keep
+/rails/tmp/*
+!/rails/tmp/.keep
+!/rails/tmp/pids/
+!/rails/tmp/pids/.keep
+!/rails/tmp/storage/
+!/rails/tmp/storage/.keep
+/rails/storage/*
+!/rails/storage/.keep
+/rails/db/*.sqlite3
+/rails/db/*.sqlite3-*
+
+# Node.js / Vite build artifacts
+/react/node_modules/
+/react/dist/
+/react/dist-ssr/
+/react/.vite/
+*.tsbuildinfo
+
+# Docker local overrides and data
+docker-compose.override.yml
+/mysql/mysql_history.txt
+
+# Application logs
+/log/
+*.log
+
+# Editor and operating-system files
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
